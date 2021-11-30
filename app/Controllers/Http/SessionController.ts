@@ -7,13 +7,11 @@ export default class SessionController {
 
   public async store({ request, auth, response, up }: HttpContextContract) {
     await auth.attempt(request.input('username'), request.input('password'))
-    up.fullReload()
     response.redirect().toRoute('JokesController.index')
   }
 
   public async destroy({ auth, response, up }: HttpContextContract) {
     await auth.logout()
-    up.fullReload()
     response.redirect().toPath('/')
   }
 }

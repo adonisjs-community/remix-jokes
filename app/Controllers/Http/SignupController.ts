@@ -7,12 +7,11 @@ export default class SignupController {
     return view.render('pages/signup')
   }
 
-  public async store({ request, auth, response, up }: HttpContextContract) {
+  public async store({ request, auth, response }: HttpContextContract) {
     const { username, password } = await request.validate(SignupValidator)
     const user = await User.create({ username, password })
 
     await auth.login(user)
-    up.fullReload()
     response.redirect().toRoute('JokesController.index')
   }
 }
