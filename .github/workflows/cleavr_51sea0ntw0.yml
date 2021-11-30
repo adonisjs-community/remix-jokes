@@ -22,7 +22,7 @@ jobs:
       - uses: bahmutov/npm-install@v1
 
       - name: Build app
-        run: undefined
+        run: npm run build --production
 
 ### ---  PLEASE DO NOT MODIFY ANYTHING BELOW THIS LINE --- ###
 
