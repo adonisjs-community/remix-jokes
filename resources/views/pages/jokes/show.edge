@@ -1,0 +1,16 @@
+@layouts.root({ title: joke.name, description: joke.content })
+  @layouts.app()
+    <p class="my-4">{{ joke.name }}</p>
+    <p class="my-4">{{ joke.content }}</p>
+
+    <form
+      method="POST"
+      action="{{ route('JokesController.destroy', [joke.id]) }}?_method=DELETE"
+      up-submit
+      up-fail-target="[layout-main]"
+      up-target="[layout-main], [layout-sidebar]"
+    >
+      <button type="submit" class="button">Delete</button>
+    </form>
+  @end
+@end

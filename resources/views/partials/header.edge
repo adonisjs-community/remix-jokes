@@ -1,0 +1,26 @@
+<header class="py-4 border-b border-eggplant-600">
+  <div class="container mx-auto flex justify-between items-center">
+    <h1 class="text-5xl font-display">
+      <a href="/" title="AdonisJS Remix Jokes" class="text-white block" up-target="body">
+        <span class="md:hidden">🤪</span>
+        <span class="hidden md:block">J🤪KES</span>
+      </a>
+    </h1>
+
+    <div class="flex items-center gap-4">
+      @if(auth.isLoggedIn)
+        <span>Hi {{ auth.user.username }}</span>
+        <form method="POST" action="{{ route('SessionController.destroy') }}">
+          <button type="submit" class="button">Logout</button>
+        </form>
+      @else
+        <a
+          href="{{ route('SessionController.create') }}"
+          up-target="body"
+        >
+          Login
+        </a>
+      @end
+    </div>
+  </div>
+</header>

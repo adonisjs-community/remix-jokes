@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title || 'Remix: So great, it\'s funny!' }}</title>
+  <meta name="twitter:title" content="{{ title || 'Remix: So great, it\'s funny!' }}">
+  <meta
+    name="description"
+    content="{{ description || 'Learn AdonisJS and laugh at the same time!' }}"
+  >
+  <meta
+    name="twitter:description"
+    content="{{ description || 'Learn AdonisJS and laugh at the same time!' }}"
+  >
+  <meta name="keywords" content="Remix,AdonisJS,jokes">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@adonisframework">
+  <meta name="twitter:site" content="@adonisframework">
+  @entryPointStyles('app')
+  @entryPointScripts('app')
+</head>
+<body class="font-body text-white">
+  {{{ await $slots.main() }}}
+</body>
+</html>

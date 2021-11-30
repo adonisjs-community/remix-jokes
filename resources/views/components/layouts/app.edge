@@ -1,0 +1,15 @@
+<div class="bg-eggplant-900 min-h-screen">
+  <section class="flex flex-col min-h">
+    @include('partials/header')
+
+    <main class="py-12 flex">
+      <div class="flex gap-12 container mx-auto">
+        @include('partials/sidebar')
+
+        <div class="flex-1" layout-main>
+          {{{ await $slots.main() }}}
+        </div>
+      </div>
+    </main>
+  </section>
+</div>

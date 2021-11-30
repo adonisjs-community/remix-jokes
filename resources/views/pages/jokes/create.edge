@@ -1,0 +1,58 @@
+@layouts.root()
+  @layouts.app()
+    @if(auth.isLoggedIn)
+      <div>
+        <p class="my-4">Add your own hilarious joke</p>
+
+        <form
+          method="POST"
+          action="{{ route('JokesController.store') }}"
+          up-submit
+          up-fail-target="[layout-main]"
+          up-target="[layout-main], [layout-sidebar]"
+        >
+          <div class="my-4">
+            <label for="name" class="block mb-1"> Name </label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              autofocus
+              class="border bg-translucent-light border-eggplant-600 rounded py-2 px-4 w-full"
+            />
+            @if(flashMessages.has('errors.name'))
+              <p class="text-red-600 text-sm" role="alert">
+                {{ flashMessages.get('errors.name') }}
+              </p>
+            @end
+          </div>
+
+          <div class="my-4">
+            <label for="content" class="block mb-1"> Content </label>
+            <textarea
+              name="content"
+              id="content"
+              class="border bg-translucent-light border-eggplant-600 rounded py-2 px-4 w-full resize-none"
+            ></textarea>
+
+            @if(flashMessages.has('errors.content'))
+              <p class="text-red-600 text-sm" role="alert">
+                {{ flashMessages.get('errors.content') }}
+              </p>
+            @end
+          </div>
+
+          <div>
+            <button type="submit" class="button"> Add </button>
+          </div>
+
+        </form>
+      </div>
+    @else
+      <div class="bg-red-700 px-6 py-8 rounded">
+        <p class="my-2">You must be logged in to create a joke.</p>
+        <a href="{{ route('SessionController.create') }}" up-target="body"> Login </a>
+      </div>
+    @end
+  @end
+@end

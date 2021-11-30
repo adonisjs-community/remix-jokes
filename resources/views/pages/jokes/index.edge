@@ -1,0 +1,25 @@
+@layouts.root({ title: randomJoke?.name, description: randomJoke?.content })
+  @layouts.app()
+    @if(!randomJoke)
+      <div class="bg-red-700 px-6 py-8 rounded">
+        <p class="my-2">There are no jokes to display.</p>
+        <a href="{{ route('JokesController.create') }}" up-target="[layout-main]">Add your own</a>
+      </div>
+    @else
+      <h2 class="font-display mb-8 text-xl text-yellow-500"> Randomly selected joke </h2>
+
+      <p class="my-4">{{ randomJoke.name }}</p>
+      <p class="my-4">{{ randomJoke.content }}</p>
+
+      <div class="my-4">
+        <a
+          href="{{ route('JokesController.show', [randomJoke.id]) }}"
+          up-target="[layout-main]"
+          up-preload
+        >
+          Permalink
+        </a>
+      </div>
+    @end
+  @end
+@end

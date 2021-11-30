@@ -1,0 +1,35 @@
+<div class="max-w-xxs" layout-sidebar>
+  @if(up.targetIncludes('[layout-sidebar]') && auth.isLoggedIn)
+    <a
+      href="{{ route('JokesController.index') }}"
+      up-target="[layout-main]"
+      up-focus="keep"
+      up-preload
+    >
+      Get a random joke
+    </a>
+    <p class="my-4">Here are a few more jokes to check out:</p>
+
+    <ul class="list-disc my-8 pl-8" role="list" up-nav>
+      @each(joke in await loadJokes(auth.user))
+        <li>
+          <a
+            href="{{ route('JokesController.show', [joke.id]) }}"
+            up-target="[layout-main]"
+            up-focus="keep"
+            up-preload
+          >{{ joke.name }}</a>
+        </li>
+      @end
+    </ul>
+
+    <a
+      href="{{ route('JokesController.create') }}"
+      up-target="[layout-main]"
+      up-preload
+      class="button"
+    >
+      Add your own
+    </a>
+  @end
+</div>

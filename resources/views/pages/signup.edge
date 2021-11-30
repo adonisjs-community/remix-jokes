@@ -1,0 +1,61 @@
+@layouts.root({ title: 'AdonisJS Remix - Signup' })
+  @layouts.auth()
+    <h1 class="font-display text-eggplant-900 text-6xl">Login</h1>
+
+    <div class="my-4" layout-auth-form>
+      <form
+        method="POST"
+        action="{{ route('SignupController.store') }}"
+        up-submit
+        up-target="body"
+        up-fail-target="[layout-auth-form]"
+      >
+        <div class="my-4">
+          <label for="username" class="block mb-1"> Username </label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            class="text-eggplant-900 border border-eggplant-600 bg-translucent-dark rounded py-2 px-4 w-full"
+            autofocus
+          >
+        </div>
+
+        <div class="my-4">
+          <label for="password" class="block mb-1"> Password </label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="text-eggplant-900 border border-eggplant-600 bg-translucent-dark rounded py-2 px-4 w-full"
+          >
+        </div>
+
+        <div class="my-4">
+          @if(flashMessages.has('auth.error'))
+            <p class="text-red-600 text-sm" role="alert">Invalid login credentials</p>
+          @end
+        </div>
+
+        <button type="submit" class="button w-full">Register</button>
+
+        <div class="mt-8">
+          Already have an account?
+          <a
+            href="{{ route('SessionController.create') }}"
+            up-target="[layout-auth-form]"
+            class="text-eggplant-900 hover:text-eggplant-900"
+          >
+            Login here
+          </a>
+        </div>
+      </form>
+    </div>
+
+    @slot('footer')
+      <div class="mt-4">
+        <a href="{{ route('/') }}" up-target="body"> Back home </a>
+      </div>
+    @end
+  @end
+@end
