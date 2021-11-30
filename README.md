@@ -35,3 +35,5 @@ The application is deployed on Digital Ocean using [Cleavr](https://cleavr.io/).
 The static assets are published on Digital ocean spaces and served using a CDN. Take a look at the `commands/PublishAssets.ts` file responsible for publishing the assets on DO spaces. The command is executed during the deployment phase using Cleavr hooks.
 
 ## Lighthouse score
+
+![](./lh-score.png)
