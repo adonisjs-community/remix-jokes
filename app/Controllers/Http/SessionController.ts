@@ -5,12 +5,12 @@ export default class SessionController {
     return view.render('pages/login')
   }
 
-  public async store({ request, auth, response, up }: HttpContextContract) {
+  public async store({ request, auth, response }: HttpContextContract) {
     await auth.attempt(request.input('username'), request.input('password'))
     response.redirect().toRoute('JokesController.index')
   }
 
-  public async destroy({ auth, response, up }: HttpContextContract) {
+  public async destroy({ auth, response }: HttpContextContract) {
     await auth.logout()
     response.redirect().toPath('/')
   }
