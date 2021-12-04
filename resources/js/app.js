@@ -3,6 +3,7 @@ import 'unpoly'
 import 'unpoly/unpoly.css'
 
 up.fragment.config.mainTargets.push('[layout-main]')
+up.fragment.config.mainTargets.push('[layout-auth-form]')
 
 up.on('up:fragment:loaded', (event) => {
   let fullReload = event.response.getHeader('X-Full-Reload')

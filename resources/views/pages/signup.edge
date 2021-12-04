@@ -1,8 +1,7 @@
 @layouts.root({ title: 'AdonisJS Remix - Signup' })
   @layouts.auth()
-    <h1 class="font-display text-eggplant-900 text-6xl">Register</h1>
-
     <div class="my-4" layout-auth-form>
+      <h1 class="font-display text-eggplant-900 text-6xl">Register</h1>
       <form
         method="POST"
         action="{{ route('SignupController.store') }}"
@@ -19,6 +18,11 @@
             class="text-eggplant-900 border border-eggplant-600 bg-translucent-dark rounded py-2 px-4 w-full"
             autofocus
           >
+          @if(flashMessages.has('errors.username'))
+            <p class="text-red-600 text-sm" role="alert">
+              {{ flashMessages.get('errors.username') }}
+            </p>
+          @end
         </div>
 
         <div class="my-4">
@@ -29,11 +33,10 @@
             id="password"
             class="text-eggplant-900 border border-eggplant-600 bg-translucent-dark rounded py-2 px-4 w-full"
           >
-        </div>
-
-        <div class="my-4">
-          @if(flashMessages.has('auth.error'))
-            <p class="text-red-600 text-sm" role="alert">Invalid login credentials</p>
+          @if(flashMessages.has('errors.password'))
+            <p class="text-red-600 text-sm" role="alert">
+              {{ flashMessages.get('errors.password') }}
+            </p>
           @end
         </div>
 
